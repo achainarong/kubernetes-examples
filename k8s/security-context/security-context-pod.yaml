@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context
+  labels:
+    name: security-context
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+  containers:
+    - name: security-context
+      image: achainarong/security-context
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "100m"
+      securityContext:
+        allowPrivilegeEscalation: false
