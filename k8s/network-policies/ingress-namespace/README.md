@@ -24,6 +24,6 @@
   kubectl exec bad -n network-bad -it -- "/bin/sh"
 
   # testing the connectiong
-  psql -U postgres -h db-service test
+  psql -U postgres -h db-service.network-demo test
 
 ```
