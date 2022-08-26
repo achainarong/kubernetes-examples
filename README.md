@@ -1,10 +1,27 @@
-# Examples
+# Quickstart to test some examples
+
+## Install minikube
+
+macOS:
+
+```shell
+  brew install minikube
+```
+
+# Starting minikube
+
+```shell
+
+  # Using calico to write network policies
+  minikube start --cni calico
+
+```
 
 ## Deploy network policies
 
 ```shell
 
-  kubectl apply -f ./k8s/network-policies/deployment
+  kubectl apply -k ./k8s/network-policies/deployment
 
 ```
 
@@ -12,7 +29,7 @@
 
 ```shell
 
-  kubectl delete -f ./k8s/network-policies/deployment
+  kubectl delete -k ./k8s/network-policies/deployment
 
 ```
 
@@ -21,5 +38,9 @@
 ```shell
 
   kubectl exec good -n network-demo -it -- "/bin/sh"
+  kubectl exec bad -n network-demo -it -- "/bin/sh"
+
+  # testing the connectiong
+  psql -U postgres -h db-service test
 
 ```
