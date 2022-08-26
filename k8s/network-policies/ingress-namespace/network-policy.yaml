@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: whitelist-network-good-namespace
+  namespace: network-demo
+spec:
+  podSelector:
+    matchLabels:
+      app: "db"
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              dbAccess: "true"
+      ports:
+        - protocol: TCP
+          port: 5432
