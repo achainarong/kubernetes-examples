@@ -1,6 +1,6 @@
 # Quickstart to test some examples
 
-## Install minikube
+## Prequisites for local development
 
 macOS:
 

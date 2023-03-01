@@ -1,17 +1,18 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nginx-hello-ingress
-  labels:
-    name: nginx-hello-ingress
-spec:
-  rules:
-    - http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: nginx-hello-service
-                port:
-                  number: 80
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx-hello-ingress
+#   labels:
+#     name: nginx-hello-ingress
+#     namespace: demo
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - pathType: Prefix
+#             path: "/"
+#             backend:
+#               service:
+#                 name: nginx-hello-service
+#                 port:
+#                   number: 80

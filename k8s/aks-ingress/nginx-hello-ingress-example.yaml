@@ -2,16 +2,22 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-hello-ingress-aks
+  namespace: demo
   labels:
     name: nginx-hello-ingress-aks
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
 spec:
+  tls:
+    - hosts:
+        - demo.achainarong.com
+      secretName: demo-tls-secret
   rules:
-    - http:
+    - host: demo.achainarong.com
+      http:
         paths:
           - pathType: Prefix
             path: "/"
